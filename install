@@ -1,0 +1,30 @@
+#!/bin/bash
+
+
+MINPAC_PATH="$HOME/.vim/pack/minpac/opt/minpac"
+
+if [[ `uname` == 'Darwin' ]]
+then
+    # Install Homebrew & Cask
+    if [ ! hash git 2>/dev/null ]; then
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        echo "HomeBrew is already installed!"
+    fi
+
+    brew tap Homebrew/bundle
+    brew bundle
+else
+    echo "This script supports only MacOs installation"
+fi
+
+# Install minpac - package manager for vim
+if [ ! -d "$MINPAC_PATH" ]; then
+    git clone https://github.com/k-takata/minpac.git "$MINPAC_PATH"
+else
+    echo "MINPAC is already installed"
+fi
+
+# Link dotfiles
+./sync
+
