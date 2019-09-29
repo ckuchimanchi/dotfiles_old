@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-MINPAC_PATH="$HOME/.vim/pack/minpac/opt/minpac"
+FZF_PATH="$HOME/.fzf"
 
 if [[ `uname` == 'Darwin' ]]
 then
@@ -13,18 +12,25 @@ then
     fi
 
     brew tap Homebrew/bundle
-    brew bundle
+    brew bundle --verbose
 else
     echo "This script supports only MacOs installation"
 fi
 
-# Install minpac - package manager for vim
-if [ ! -d "$MINPAC_PATH" ]; then
-    git clone https://github.com/k-takata/minpac.git "$MINPAC_PATH"
-else
-    echo "MINPAC is already installed"
-fi
 
 # Link dotfiles
 ./sync
+
+#Running further commands for some specific packages
+
+# Note: fzf section should be after sync execution above -- otherwise it will create a new .zsh file if it's not present!
+#fzf is used in both commandline and Vim
+#Ideally installing vim plugins would automatically pull down fzf as well, but loading it before if vim is not opened and still zsh keycompletions are good
+
+if [ ! -d "$FZF_PATH" ]; then
+	git clone --depth 1 https://github.com/junegunn/fzf.git $FZF_PATH
+	$FZF_PATH/install --all
+else 
+	echo "FZF already installed"
+fi
 

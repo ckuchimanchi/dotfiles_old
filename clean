@@ -1,0 +1,9 @@
+#Dangerous to run it if some existing files are present
+so for now just noting down what needs to be checked
+for a clean set up
+
+rm .vimrc 
+rm .zshrc 
+rm .p10k.zsh
+rm -rf .vim
+rm -rf .antigen

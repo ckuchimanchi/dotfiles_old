@@ -7,7 +7,7 @@ warning() {
   printf "\e[33m${message}\e[0m\n"
 }
 
-links="zshrc vimrc"
+links="zshrc vimrc p10k.zsh"
 
 for filename in $links; do
 

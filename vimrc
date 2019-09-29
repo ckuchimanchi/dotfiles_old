@@ -5,17 +5,27 @@ set hidden
 filetype plugin indent on
 syntax on
 
-packadd minpac
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  "Note: This would install all plugins and source vimrc again 
+  "on opening vim for first time when plug.vim was not found 
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-call minpac#init()
+call plug#begin('~/.vim/pack/bundle/start')
 
-call minpac#add('tpope/vim-unimpaired')
-call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-characterize')
-call minpac#add('hhvm/vim-hack')
-call minpac#add('junegunn/fzf.vim')
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-characterize'
+Plug 'hhvm/vim-hack'
+Plug 'junegunn/fzf',{'dir': '~/.fzf' , 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+
+" Initialize plugin system
+call plug#end()
 
 "custom mappings
 let mapleader = ","
@@ -23,19 +33,15 @@ let mapleader = ","
 "insert mode mappings
 inoremap jk <Esc>
 
-"command mode mappings
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
-
 "normal mode mappings
 
 "windows movement
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <C-L> <C-W><C-Lk
+nnoremap <C-L> <C-W><C-L>
 
-nnoremap <leader>r :source $MYVIMRC<cr>
+nnoremap <silent> <leader>r :source $MYVIMRC<cr>
 nnoremap <leader>v :edit $MYVIMRC<cr>
 
 if filereadable(glob("~/.vimrc.local"))
