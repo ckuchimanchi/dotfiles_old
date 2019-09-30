@@ -5,6 +5,7 @@ set hidden
 set showmatch
 set incsearch
 set undofile
+set undodir=~/.vim/undo 
 set backspace=indent,eol,start
 set splitright
 
@@ -34,6 +35,8 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/MaxMEllon/vim-jsx-pretty'
 Plug 'https://github.com/mxw/vim-xhp'
+Plug 'https://github.com/dense-analysis/ale' 
+
 
 " Initialize plugin system
 call plug#end()

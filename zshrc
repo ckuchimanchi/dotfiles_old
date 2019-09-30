@@ -1,3 +1,6 @@
+#work remains to get rid of dotfiles_root and see how it can be made independent
+#for now using it to refer to antigen.sh
+
 export DOTFILES_ROOT="$HOME/dotfiles"
 # export FZF_DEFAULT_COMMAND='fd --type f '
 export FZF_DEFAULT_COMMAND='rg --files'
@@ -29,4 +32,7 @@ done
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
