@@ -1,6 +1,12 @@
 export DOTFILES_ROOT="$HOME/dotfiles"
-export FZF_DEFAULT_COMMAND='fd --type f '
+# export FZF_DEFAULT_COMMAND='fd --type f '
+export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --inline-info'
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
+
+export EDITOR=vim
+
 
 source $DOTFILES_ROOT/antigen.zsh
 

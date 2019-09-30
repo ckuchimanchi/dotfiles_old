@@ -2,6 +2,12 @@ set number
 set ignorecase
 set smartcase
 set hidden
+set showmatch
+set incsearch
+set undofile
+set backspace=indent,eol,start
+set splitright
+
 filetype plugin indent on
 syntax on
 
@@ -15,20 +21,25 @@ endif
 
 call plug#begin('~/.vim/pack/bundle/start')
 
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-characterize'
-Plug 'hhvm/vim-hack'
-Plug 'junegunn/fzf',{'dir': '~/.fzf' , 'do': './install --all'}
-Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/tpope/vim-unimpaired'
+Plug 'https://github.com/tpope/vim-repeat'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/tpope/vim-characterize'
+Plug 'https://github.com/hhvm/vim-hack'
+Plug 'https://github.com/junegunn/fzf',{'dir': '~/.fzf' , 'do': './install --all'}
+Plug 'https://github.com/junegunn/fzf.vim'
+Plug 'https://github.com/sjl/gundo.vim'
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/godlygeek/tabular'
+Plug 'https://github.com/MaxMEllon/vim-jsx-pretty'
+Plug 'https://github.com/mxw/vim-xhp'
 
 " Initialize plugin system
 call plug#end()
 
 "custom mappings
-let mapleader = ","
+let mapleader = " "
 
 "insert mode mappings
 inoremap jk <Esc>
@@ -41,8 +52,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-L> <C-W><C-L>
 
-nnoremap <silent> <leader>r :source $MYVIMRC<cr>
-nnoremap <leader>v :edit $MYVIMRC<cr>
+nnoremap <leader>ev :edit $MYVIMRC<CR>
+nnoremap <leader>ez :edit ~/.zshrc<CR>
+nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
+
+nnoremap <leader><space> :set hlsearch!<cr>
+
+nnoremap <C-p> :<C-u>FZF<cr>
 
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
